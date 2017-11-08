@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  priceperweek: 1
+  condition: MyString
+
+two:
+  brand: MyString
+  model: MyString
+  priceperweek: 1
+  condition: MyString

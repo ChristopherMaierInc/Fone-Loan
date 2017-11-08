@@ -34,6 +34,10 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'bootswatch-rails'
+gem "stripe"
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

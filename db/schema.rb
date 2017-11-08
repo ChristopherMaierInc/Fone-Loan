@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108045517) do
+ActiveRecord::Schema.define(version: 20171108092649) do
+
+  create_table "images", force: :cascade do |t|
+    t.string "picture"
+    t.integer "phone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["phone_id"], name: "index_images_on_phone_id"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "brand"
+    t.string "model"
+    t.integer "priceperweek"
+    t.string "condition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +46,12 @@ ActiveRecord::Schema.define(version: 20171108045517) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street_address"
+    t.string "suburb"
+    t.integer "postcode"
+    t.string "state"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
