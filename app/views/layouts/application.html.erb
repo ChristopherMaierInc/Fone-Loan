@@ -45,12 +45,29 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Loanfone</a>
+        <%= link_to 'Loan\Fone', root_path, class: 'navbar-brand' %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Link1", "/path1"  %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
+          </ul>
+          <ul class="nav navbar-right col-md-6">
+            <% if current_user %>
+              <li class="col-md-3">
+                <%= link_to 'My Account', edit_user_registration_path,
+                title: 'Edit Profile', class: 'btn btn-xs btn-primary' %>
+              </li>
+              <li class="col-md-3"><%= link_to('Logout', destroy_user_session_path,
+              class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
+            <% else %>
+              <li class="col-md-3">
+              <%= link_to('Sign In', new_user_session_path, class: 'btn btn-xs  btn-success', title: 'Sign In') %>
+              </li>
+              <li class="col-md-3">
+              <%= link_to('Sign Up', new_user_registration_path, class: 'btn btn-xs btn-info', title: 'Sign In') %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -62,21 +79,12 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
+
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2017</p>
+        <br>
+        <p>&copy; Copyright LoanFone 2017</p>
       </footer>
 
     </div> <!-- /container -->
