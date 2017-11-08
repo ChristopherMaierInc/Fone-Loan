@@ -1,0 +1,55 @@
+<%= form_for @phone, :html => { :class => "form-horizontal phone" } do |f| %>
+
+  <% if @phone.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@phone.errors.count, "error") %> prohibited this phone from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @phone.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :brand, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-7">
+      <%= f.text_field :brand, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:brand) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :model, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-7">
+      <%= f.text_field :model, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:model) %>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Price per 1x week rent?', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-7">
+      <%= f.text_field :priceperweek, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:priceperweek) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :condition, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-7">
+      <%= f.text_field :condition, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:condition) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                phones_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
