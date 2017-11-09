@@ -39,6 +39,11 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'sendgrid-ruby'
+gem 'activeadmin'
+# Plus integrations with:
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
