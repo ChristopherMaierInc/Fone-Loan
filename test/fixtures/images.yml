@@ -3,9 +3,7 @@
 one:
   name: MyString
   picture: MyString
-  phone: one
 
 two:
   name: MyString
   picture: MyString
-  phone: two

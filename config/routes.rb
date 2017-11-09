@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+
+
+  resources :messages
+  resources :conversations
   resources :phones
-  resources :images
+  resources :charges
+  # resources :images
   root 'welcome#index'
+  get 'charges/thanks'
 
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 

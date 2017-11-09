@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<dl class="dl-horizontal">
+<% @conversation.messages.each do |convo| %>
+
+  <dt><strong><%= convo.user.email %></strong></dt>
+  <dd><%= convo.message %></dd>
+  <% end %>
+</dl>
+
+ <%= render '/messages/form', message: Message.new %>
+
+<%= link_to 'Edit', edit_conversation_path(@conversation) %> |
+<%= link_to 'Back', conversations_path %>

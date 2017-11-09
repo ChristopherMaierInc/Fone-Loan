@@ -15,7 +15,6 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = Image.new
-    @image.user = current_user
   end
 
   # GET /images/1/edit
@@ -70,6 +69,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:name, :picture, :phone_id)
+      params.require(:image).permit(:name, :picture)
     end
 end

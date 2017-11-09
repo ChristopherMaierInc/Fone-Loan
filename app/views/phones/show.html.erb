@@ -14,6 +14,46 @@
   <dd><%= @phone.condition %></dd>
 </dl>
 
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <select name="weeks">
+      <option value="1">1 week</option>
+      <option value="2">2 weeks</option>
+      <option value="3">3 weeks</option>
+      <option value="4">4 weeks</option>
+    </select>
+    <input type="hidden" value="<%= params[:id] %>" name="phone_id">
+    <label class="amount">
+      <span id="amount">Amount: $5.00</span>
+      <div id="paybtn"></div>
+    </label>
+  </article>
+
+  <script>
+  function createStripeButton(amount) {
+    return 'script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Payment for phone" data-amount="'+amount+'" data-locale="auto"></script'
+  }
+
+  var pricePerWeek = <%= @phone.priceperweek * 100 %>
+  $(document).ready(function(){
+    $('select[name=weeks]').change(function(){
+      var total = $(this).val() * pricePerWeek
+      $('#amount').html('$' + total/100)
+      $('#paybtn').html('<' + createStripeButton(total) + '>')
+      console.log(total)
+    })
+  })
+
+  </script>
+<% end %>
+
+ <%= render '/messages/form', message: Message.new %>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
               phones_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
