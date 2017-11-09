@@ -38,6 +38,7 @@ gem "stripe"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'sendgrid-actionmailer'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
