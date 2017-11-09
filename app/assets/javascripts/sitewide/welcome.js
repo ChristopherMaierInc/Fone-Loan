@@ -4,3 +4,8 @@ jQuery(document).ready(function($) {
 $('#carousel-example-generic').carousel(randomSlide);
 $('#carousel-example-generic').carousel('next');
 });
+
+$('.selectpicker').selectpicker({
+  style: 'btn-info',
+  size: 4
+});

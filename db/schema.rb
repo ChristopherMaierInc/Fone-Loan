@@ -10,18 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109030610) do
+ActiveRecord::Schema.define(version: 20171109173500) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer "user1_id"
     t.integer "user2_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string "name"
-    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +37,7 @@ ActiveRecord::Schema.define(version: 20171109030610) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "image"
     t.index ["user_id"], name: "index_phones_on_user_id"
   end
 

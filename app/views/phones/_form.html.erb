@@ -1,55 +1,148 @@
 <%= form_for @phone, :html => { :class => "form-horizontal phone" } do |f| %>
 
-  <% if @phone.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@phone.errors.count, "error") %> prohibited this phone from being saved:</h3>
+<% if @phone.errors.any? %>
+  <div id="error_expl" class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= pluralize(@phone.errors.count, "error") %> prohibited this phone from being saved:</h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+      <% @phone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+<div class="container newfone">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="bs-docs-example">
+        <div class="form-group">
+           <select name="phone[model]" class="selectpicker form-control" title="Smartphone Brand" data-live-search="true">
+            <option>Apple</option>
+            <option>Google</option>
+            <option>Samsung</option>
+            <option>LG</option>
+            <option>Essential</option>
+            <option>OnePlus</option>
+            <option>ZTE</option>
+            <option>HTC</option>
+            <option>Huawei</option>
+            <option>Xiaomi</option>
+            <option>Nokia</option>
+            <option>Microsoft</option>
+            <option>Sony</option>
+            <option>Acer</option>
+            <option>Asus</option>
+            <option>Blackberry</option>
+            <option>Amazon</option>
+            <option>Motorola</option>
+            <option>Meizu</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <%=f.error_span(:model) %>
       </div>
-      <div class="panel-body">
-        <ul>
-        <% @phone.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="bs-docs-example">
+        <div class="form-group">
+           <select name="phone[brand]" class="selectpicker form-control" title="Smartphone Brand" data-live-search="true">
+            <option>Apple</option>
+            <option>Google</option>
+            <option>Samsung</option>
+            <option>LG</option>
+            <option>Essential</option>
+            <option>OnePlus</option>
+            <option>ZTE</option>
+            <option>HTC</option>
+            <option>Huawei</option>
+            <option>Xiaomi</option>
+            <option>Nokia</option>
+            <option>Microsoft</option>
+            <option>Sony</option>
+            <option>Acer</option>
+            <option>Asus</option>
+            <option>Blackberry</option>
+            <option>Amazon</option>
+            <option>Motorola</option>
+            <option>Meizu</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <%=f.error_span(:brand) %>
       </div>
     </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :brand, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-7">
-      <%= f.text_field :brand, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:brand) %>
   </div>
-  <div class="form-group">
-    <%= f.label :model, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-7">
-      <%= f.text_field :model, :class => 'form-control' %>
+  <%=f.error_span(:model) %>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="bs-docs-example">
+      <div class="form-group">
+        <select name="phone[priceperweek]" class="selectpicker" data-live-search="true" title="Price per wk ($AU)">
+          <option>1</option>
+          <option>2</option>
+          <option>5</option>
+          <option>10</option>
+          <option>15</option>
+          <option>20</option>
+          <option>25</option>
+          <option>50</option>
+          <option>75</option>
+          <option>100</option>
+          <option>125</option>
+          <option>150</option>
+        </select>
+      </div>
     </div>
-    <%=f.error_span(:model) %>
   </div>
-  <div class="form-group">
-    <%= f.label 'Price per 1x week rent?', :class => 'control-label col-lg-2' %>
-    <div class="col-lg-7">
-      <%= f.text_field :priceperweek, :class => 'form-control' %>
+  <%=f.error_span(:priceperweek) %>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="bs-docs-example">
+      <div class="form-group">
+        <select name="phone[condition]" class="selectpicker" data-live-search="true" title="Condition">
+          <option>Flawless: As new.</option>
+          <option>Excellent: Used. No scratches/scuffs.</option>
+          <option>Great: Works perfectly. Some scratches.</option>
+          <option>Good: Works well. Scuffed. </option>
+          <option>Poor: Works. Some damage to screen etc.</option>
+          <option>Broken: Doesn't work.</option>
+          <option>Exploded. Hi Samsung Note 7.</option>
+        </select>
+      </div>
     </div>
-    <%=f.error_span(:priceperweek) %>
   </div>
-  <div class="form-group">
-    <%= f.label :condition, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-7">
-      <%= f.text_field :condition, :class => 'form-control' %>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="bs-docs-example">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <span class="btn btn-default btn-file">
+            Browse
+            <input accept="image/jpeg, image/gif, image/png" name="image" type="file" id="image">
+          </span>
+           <%=f.error_span(:image) %>
+        </span>
+        <input readonly="readonly" placeholder="Upload a photo of your phone" class="form-control" name="filename" type="text">
+      </div>
     </div>
-    <%=f.error_span(:condition) %>
   </div>
-
+</div><br>
+<div class="row">
   <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
+    <div class="col-xs-offset-1 col-xs-6">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 phones_path, :class => 'btn btn-default' %>
     </div>
   </div>
-
+</div>
 <% end %>
+</div>

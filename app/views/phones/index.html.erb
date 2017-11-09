@@ -2,10 +2,24 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<% @phones.each do |p| %>
+<div class="col-md-3">
+  <div class="card" style="width: 20rem;">
+    <%= image_tag p.image, class: 'card-img-top', alt: 'Upload of users smartphone to be loaned out' %>
+      <div class="card-block">
+        <p class="card-text"><strong><%= p.brand %></strong> <%= p.model %></p>
+        <p class="card-text"><strong>$<%= p.priceperweek %>.00</strong> per wk</p>
+        <p class="card-text"><strong>Condition: </strong><%= p.condition %></p>
+      <%= link_to 'Checkout LoanFone', phone_path(p), class: "btn bt-xs btn-primary" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:brand) %></th>
       <th><%= model_class.human_attribute_name(:model) %></th>
       <th><%= model_class.human_attribute_name(:priceperweek) %></th>
@@ -17,7 +31,6 @@
   <tbody>
     <% @phones.each do |phone| %>
       <tr>
-        <td><%= link_to phone.id, phone_path(phone) %></td>
         <td><%= phone.brand %></td>
         <td><%= phone.model %></td>
         <td><%= phone.priceperweek %></td>

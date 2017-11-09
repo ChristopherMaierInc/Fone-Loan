@@ -7,65 +7,27 @@
     <title><%= content_for?(:title) ? yield(:title) : "Loan\Fone" %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
   </head>
   <body>
-
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to 'Loan\Fone', root_path, class: 'navbar-brand' %>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Find a Fone", '/phones' %></li>
-            <li><%= link_to "Loan a Fone", new_phone_path  %></li>
-            <li><%= link_to "About", "/path3"  %></li>
-          </ul>
-          <ul class="nav navbar-right col-md-6">
-            <% if current_user %>
-              <li class="col-md-3">
-                <%= link_to 'My Account', edit_user_registration_path,
-                title: 'Edit Profile', class: 'btn btn-xs btn-primary' %>
-              </li>
-              <li class="col-md-3"><%= link_to('Logout', destroy_user_session_path,
-              class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
-            <% else %>
-              <li class="col-md-3">
-              <%= link_to('Sign In', new_user_session_path, class: 'btn btn-xs  btn-success', title: 'Sign In') %>
-              </li>
-              <li class="col-md-3">
-              <%= link_to('Sign Up', new_user_registration_path, class: 'btn btn-xs btn-info', title: 'Sign In') %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+    <%= render 'layouts/navigation' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= bootstrap_flash %>
+        <%= yield %>
       </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-
-      </div><!--/row-->
-
+    </div><!--/row-->
       <footer>
         <br>
         <p>&copy; Copyright Loan\Fone 2017</p>
       </footer>
-
     </div> <!-- /container -->
-
   </body>
 </html>

@@ -3,6 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
+  <%= image_tag @phone.image, alt: 'Phone of customers mobile to loan' %>
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:brand) %>:</strong></dt>
   <dd><%= @phone.brand %></dd>
@@ -21,17 +22,6 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <select name="weeks">
-      <option value="1">1 week</option>
-      <option value="2">2 weeks</option>
-      <option value="3">3 weeks</option>
-      <option value="4">4 weeks</option>
-    </select>
-    <input type="hidden" value="<%= params[:id] %>" name="phone_id">
-    <label class="amount">
-      <span id="amount">Amount: $5.00</span>
-      <div id="paybtn"></div>
-    </label>
   </article>
 
   <script>
