@@ -358,9 +358,6 @@ GEM
     selenium-webdriver (3.7.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
-    sendgrid-actionmailer (0.2.1)
-      mail (~> 2.5)
-      sendgrid-ruby (< 2.0)
     sendgrid-ruby (1.1.6)
       faraday (~> 0.9)
       mimemagic
@@ -433,7 +430,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
-  sendgrid-actionmailer
+  sendgrid-ruby
   sqlite3
   stripe
   turbolinks (~> 5)
