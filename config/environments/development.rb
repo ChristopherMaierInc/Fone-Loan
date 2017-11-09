@@ -8,7 +8,19 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-  config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_caching = false
+
+#   config.action_mailer.delivery_method = :mailgun
+#   config.action_mailer.mailgun_settings = {
+#
+#   api_key: ENV.fetch('MAILGUN_API'),
+#
+#   domain: ENV.fetch('MAILGUN_DOMAIN'),
+#
+# }
 
 
   # Show full error reports.
@@ -16,7 +28,6 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
-    config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
@@ -53,4 +64,16 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+    ActionMailer::Base.smtp_settings = {
+      :user_name => ENV.fetch('SENDGRID_USERNAME'),
+      :password => ENV.fetch('SENDGRID_PASSWORD'),
+      :domain => 'loanfone.herokuapp.com',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  ActionMailer::Base.delivery_method = :smtp
+
 end

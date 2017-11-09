@@ -9,7 +9,19 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-  config.action_mailer.default_url_options = { :host => 'loanfone.herokuapp.com', :protocol => 'https' }
+  config.action_mailer.default_url_options = { :host => "https://loanfone.herokuapp.com" }
+
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_caching = false
+
+#   config.action_mailer.delivery_method = :mailgun
+#   config.action_mailer.mailgun_settings = {
+#
+#   api_key: ENV.fetch('MAILGUN_API'),
+#
+#   domain: ENV.fetch('MAILGUN_DOMAIN'),
+#
+# }
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -90,5 +102,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV.fetch('SENDGRID_USERNAME'),
+    :password => ENV.fetch('SENDGRID_PASSWORD'),
+    :domain => 'loanfone.herokuapp.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+ActionMailer::Base.delivery_method = :smtp
 
 end
