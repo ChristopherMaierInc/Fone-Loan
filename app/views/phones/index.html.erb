@@ -6,7 +6,7 @@
 <% @phones.each do |p| %>
 <div class="col-md-3">
   <div class="card" style="width: 20rem;">
-    <%= image_tag p.image, class: 'card-img-top', alt: 'Upload of users smartphone to be loaned out' %>
+    <%= image_tag 'xiaomi-mi-mix-2-front.jpg', width: 175, class: 'card-img-top', alt: 'Upload of users smartphone to be loaned out' %>
       <div class="card-block">
         <p class="card-text"><strong><%= p.brand %></strong> <%= p.model %></p>
         <p class="card-text"><strong>$<%= p.priceperweek %>.00</strong> per wk</p>

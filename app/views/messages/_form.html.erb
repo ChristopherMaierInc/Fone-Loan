@@ -12,8 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message, id: :message_message %>
+    <div class="form-group">
+      <h3>Send Message:</h3>
+        <textarea name="message[message]" class="form-control" rows="5" id="comment"></textarea>
+    </div>
   </div>
 
   <% if !@phone.nil? %>
